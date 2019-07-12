@@ -3,3 +3,15 @@ body {margin: 0;}
 .input-card {width: 25rem;}
 .input-card .btn {width: 7rem;margin-right: .7rem;}
 .input-card .btn:last-child {margin-right: 0;}
+div.navbar {position: fixed;top: 0;width: 100vw;height: 72px;background-color: #FFFFFF;z-index: 999;box-shadow: 10px 3px 5px #f0f0f0;}
+img.logo {margin: 20px 0px 20px 40px;width: 85px;}
+img.searchIcon {width: 16px;margin-right: 100px;}
+img.newIn {position: absolute;top: 12px;width: 30px;}
+ul {list-style-type: none;margin: 0 50px 0 0;padding: 0;float: right;}
+li {display: inline-block;margin: 20px 85px 27px 0;}
+.smoothScroll {font-family: "微軟正黑體";color: #878787;text-decoration: none;}
+.now {color: #000000;font-weight: bold;}
+div.Rectangle {width: 90px;height: 35px;border: solid 1px #979797;color: #979797;padding: 8px;text-align: center;}
+.specialImg {width: 40px;height: 40px;}
+.specialImg:hover {transform: scale(1.5, 1.5);}
+.slider {display: none;position: fixed;bottom: 5px;left: 10%;width: 80vw;z-index: 999;}

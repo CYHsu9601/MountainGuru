@@ -7,43 +7,62 @@
       <title>山通 - 您最佳的登山导师 | Mountain Guru</title>
       <link rel="icon" href="images/MountainGuru.ico" type="image/ico" />
       <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+      <link rel="stylesheet" href="css/style.css">
       <style>
           html, body, #container {
               height: 100%;
               width: 100%;
           }
-
-          .input-card {
-              width: 25rem;
-          }
-
-          .input-card .btn {
-              width: 7rem;
-              margin-right: .7rem;
-          }
-
-          .input-card .btn:last-child {
-              margin-right: 0;
-          }
       </style>
   </head>
   <body>
+
   <div id="container" class="map" tabindex="0"></div>
-  <div class="input-card">
+  <div class="navbar">
+    <img src="images/invalid-name.png" alt="logoImg" class="logo">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class="smoothScroll now">山 岳 百 科</a></li>
+      <li><a href="#" class="smoothScroll">登 山 学 校</a></li>
+      <li>
+        <div class="">
+          <img src="images/Group 3.png" class="newIn" alt="newInIcon">
+          <a href="#" class="smoothScroll">自 我 评 估</a>
+        </div>
+      </li>
+      <li><a href="#" class="smoothScroll search"><img src="images/Group 2.png" class="searchIcon" alt="searchIcon"></a></li>
+      <li><a href="#" class="smoothScroll"><div class="Rectangle">登入 / 注册</div></li>
+    </ul>
+  </div>
+  <img src="images/Group 13.png" class="slider" id="slider" alt="">
+  <!--<div class="input-card">
       <h4>聚合点效果切换</h4>
       <div class="input-item">
           <input type="button" class="btn" value="默认样式" id="add0" onclick='addCluster(0)'/>
           <input type="button" class="btn" value="自定义图标" id="add1" onclick='addCluster(1)'/>
           <input type="button" class="btn" value="完全自定义" id="add2" onclick='addCluster(2)'/>
       </div>
-  </div>
+  </div>-->
   <script src="https://a.amap.com/jsapi_demos/static/china.js"></script>
   <script language="javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=b8567f896e08d44ace84a872f45891a6&plugin=Map3D,AMap.DistrictLayer,AMap.Scale,AMap.ToolBar,AMap.MarkerClusterer"></script>
   <script type="text/javascript">
       var SOC = 'CHN';
-      var pictures = ['SiguniangMountain.jpg','SiguniangMountain1.jpg','leopard.jpg','panada.jpg'];
+      var pictures = ['SiguniangMountain.jpg','SiguniangMountain1.jpg','leopard.jpg','view2.jpg','view1.jpg','panada.jpg','view3.jpg','view4.jpg','view5.jpg','view6.png','view7.png','view8.png','view9.png'];
+      var SiguniangLong = ['102.8588','102.9056'];
+      var SiguniangLati = ['31.08013','31.16000'];
+      var specialImg = ['panda-bear.png','tree.png'];
       var cluster, markers = [];
-      var disCountry = new AMap.DistrictLayer.Country({
+
+      //產生min到max之間的亂數
+      function getRandom(number){
+        if (number>100) {
+          return Number((Math.random()/10).toFixed(6));
+        }
+        else {
+          return Number((Math.random()/10).toFixed(4));
+        }
+      };
+
+      /*var disCountry = new AMap.DistrictLayer.Country({
           zIndex:10,
           SOC: SOC,
           depth:2,
@@ -55,34 +74,46 @@
               'city-stroke': '#858585',//中国特有字段
               'fill':'rgba(255,255,255,0)'
               }
-      })
+      })*/
       var map = new AMap.Map("container", {
-          center: [103.802500, 41.322700],
+          center: [103.802500, 43.322700],
           zoom:5,
+          zooms:[5,11],
           resizeEnable: true,
           showIndoorMap:false,
           isHotspot:false,
-          defaultCursor:'pointer',
           touchZoomCenter:1,
           pitch: 0,
           layers:[
-              disCountry,
-              new AMap.TileLayer.Satellite(),
-              new AMap.TileLayer.RoadNet()
+              //disCountry,
+              new AMap.TileLayer()
+              //new AMap.TileLayer.RoadNet()
           ],
           viewMode:'3D',
           resizeEnable: true
       });
-
-      for (var i = 0; i < (points.length-3000); i++) {
-        for (var j = 0; j <10; j++) {
-          markers.push(new AMap.Marker({
-              position: points[i]['lnglat'],
-              //content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
-              offset: new AMap.Pixel(-15, -15),
-              icon: 'images/' + pictures[j] // 添加 Icon 图标 URL
-          }))
+      var num = 0;
+      for (var i = 0; i < (points.length-11000); i++) {
+        markers.push(new AMap.Marker({
+            position: points[i]['lnglat'],
+            //content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
+            offset: new AMap.Pixel(-15, -15),
+            icon: 'images/' + pictures[num] // 添加 Icon 图标 URL
+        }))
+        num++;
+        if (num%13==0) {
+          num = 0;
         }
+      }
+
+      //添加四姑娘山周圍插畫
+      for (var j = 0; j < 2; j++) {
+        markers.push(new AMap.Marker({
+            position: new AMap.LngLat(SiguniangLong[j],SiguniangLati[j]),
+            //content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
+            offset: new AMap.Pixel(-15, -15),
+            content:'<img src="images/'+ specialImg[j] +'" class="specialImg" onmouseover="show()" id="specialImg" alt="">'
+        }))
       }
 
       var count = markers.length;
@@ -109,7 +140,7 @@
           context.marker.setContent(div)
       };
 
-      addCluster(2);
+      addCluster(1);
 
       function addCluster(tag) {
           if (cluster) {
@@ -144,12 +175,27 @@
               }];
               cluster = new AMap.MarkerClusterer(map, markers, {
                   styles: sts,
-                  gridSize: 80
+                  gridSize: 75
               });
           } else {//默认样式
-              cluster = new AMap.MarkerClusterer(map, markers, {gridSize: 80});
+              cluster = new AMap.MarkerClusterer(map, markers, {gridSize: 75});
           }
       }
+
+      var marker = new AMap.Marker({
+       position: [102.9033,31.09130],
+       content:'<img src="images/mountains.png" alt="">',
+       offset: new AMap.Pixel(-13, -30),
+       // 设置是否可拖拽
+       draggable: true,
+       cursor: 'pointer'
+   });
+   marker.setMap(map);
+   // 设置点标记的动画效果，此处为弹跳效果
+  marker.setAnimation('AMAP_ANIMATION_BOUNCE');
+  function show() {
+    document.getElementById("slider").style.display = "block";
+  }
   </script>
   </body>
 </html>
