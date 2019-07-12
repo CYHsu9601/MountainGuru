@@ -16,7 +16,9 @@
       </style>
   </head>
   <body>
-
+    <!--<div class="loaderPart">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>-->
   <div id="container" class="map" tabindex="0"></div>
   <div class="navbar">
     <img src="images/invalid-name.png" alt="logoImg" class="logo">
@@ -33,7 +35,8 @@
       <li><a href="#" class="smoothScroll"><div class="Rectangle">登入 / 注册</div></li>
     </ul>
   </div>
-  <img src="images/Group 13.png" class="slider" id="slider" alt="">
+  <img src="images/Group 12.png" class="slider" id="slider" alt="">
+
   <!--<div class="input-card">
       <h4>聚合点效果切换</h4>
       <div class="input-item">
@@ -61,20 +64,6 @@
           return Number((Math.random()/10).toFixed(4));
         }
       };
-
-      /*var disCountry = new AMap.DistrictLayer.Country({
-          zIndex:10,
-          SOC: SOC,
-          depth:2,
-          styles:{
-              'nation-stroke':'yellow',
-              'province-stroke':'#858585',
-              'coastline-stroke':'yellow',
-              'weight':'15',
-              'city-stroke': '#858585',//中国特有字段
-              'fill':'rgba(255,255,255,0)'
-              }
-      })*/
       var map = new AMap.Map("container", {
           center: [103.802500, 43.322700],
           zoom:5,
@@ -175,19 +164,19 @@
               }];
               cluster = new AMap.MarkerClusterer(map, markers, {
                   styles: sts,
-                  gridSize: 75
+                  gridSize: 80
               });
           } else {//默认样式
-              cluster = new AMap.MarkerClusterer(map, markers, {gridSize: 75});
+              cluster = new AMap.MarkerClusterer(map, markers, {gridSize: 80});
           }
       }
 
       var marker = new AMap.Marker({
-       position: [102.9033,31.09130],
+       position: [102.9030,31.09130],
        content:'<img src="images/mountains.png" alt="">',
        offset: new AMap.Pixel(-13, -30),
        // 设置是否可拖拽
-       draggable: true,
+       //draggable: true,
        cursor: 'pointer'
    });
    marker.setMap(map);

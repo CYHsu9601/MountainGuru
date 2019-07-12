@@ -3,7 +3,7 @@ body {margin: 0;}
 .input-card {width: 25rem;}
 .input-card .btn {width: 7rem;margin-right: .7rem;}
 .input-card .btn:last-child {margin-right: 0;}
-div.navbar {position: fixed;top: 0;width: 100vw;height: 72px;background-color: #FFFFFF;z-index: 999;box-shadow: 10px 3px 5px #f0f0f0;}
+div.navbar {position: fixed;top: 0;width: 100vw;height: 72px;background-color: #FFFFFF;z-index: 990;box-shadow: 10px 3px 5px #f0f0f0;}
 img.logo {margin: 20px 0px 20px 40px;width: 85px;}
 img.searchIcon {width: 16px;margin-right: 100px;}
 img.newIn {position: absolute;top: 12px;width: 30px;}
@@ -14,4 +14,37 @@ li {display: inline-block;margin: 20px 85px 27px 0;}
 div.Rectangle {width: 90px;height: 35px;border: solid 1px #979797;color: #979797;padding: 8px;text-align: center;}
 .specialImg {width: 40px;height: 40px;}
 .specialImg:hover {transform: scale(1.5, 1.5);}
-.slider {display: none;position: fixed;bottom: 5px;left: 10%;width: 80vw;z-index: 999;}
+.slider {display: none;position: fixed;bottom: 13%;left: 10%;width: 80vw;z-index: 990;}
+/*.loaderPart {width: 100vw;height: 100vh;background-color: #ffffff;}
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #878787;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+*/
